@@ -1,8 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using MVCCodigoNET2024.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<SchoolContext>(
+    options =>
+    {
+        options.UseSqlServer("Data Source=.;" +
+            "Initial Catalog=CodigoMVCDB;User ID=userCodigo;Pwd=123456;" +
+            "TrustServerCertificate=True");
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
