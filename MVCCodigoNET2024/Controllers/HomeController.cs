@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCCodigoNET2024.Interfaces;
 using MVCCodigoNET2024.Models;
 using System.Diagnostics;
 
@@ -8,17 +7,14 @@ namespace MVCCodigoNET2024.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IDatabase _database;
 
-        public HomeController(ILogger<HomeController> logger, IDatabase database)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _database = database;
         }
 
         public IActionResult Index()
         {
-            _database.Create();
             return View();
         }
 
