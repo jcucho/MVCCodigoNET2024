@@ -9,9 +9,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SchoolContext>(
     options =>
     {
-        options.UseSqlServer("Data Source=.;" +
-            "Initial Catalog=CodigoMVCDB;User ID=userCodigo;Pwd=123456;" +
-            "TrustServerCertificate=True");
+        //options.UseSqlServer("Data Source=.;" +
+        //    "Initial Catalog=CodigoMVCDB;User ID=userCodigo;Pwd=123456;" +
+        //    "TrustServerCertificate=True");
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
     });
 var app = builder.Build();
 
